@@ -227,10 +227,11 @@ public class Main implements Runnable{
        		 double enemyY = enemies.get(i).y;
        			 if (arrow_X <= enemyX+20 && arrow_X >= enemyX-20 ) {
        				 if (arrow_Y <= enemyY + 20 && arrow_Y >= enemyY - 20) {
+       					 if (isArrowOnPowerup == false) {
        			    	 enemies.remove(i);
        			    	 System.out.println("Game over!");
        			    	 System.exit(0);
-       			    	 String a = "";
+       					 }
        					 break;
        			     }
        		     }
@@ -310,8 +311,11 @@ public class Main implements Runnable{
    			 double bulletY = bullets.get(k).Y;
    			 if (bulletX <= enemyX+20 && bulletX >= enemyX-20 ) {
    				 if (bulletY <= enemyY + 20 && bulletY >= enemyY - 20) {
-   			    	 enemies.remove(i);
-   					 bullets.remove(k);
+   					 if (isArrowOnPowerup == false) {
+   						bullets.remove(k);
+   					 }
+   					enemies.remove(i);
+   					 
    					 amountKilled++;
    					 tree.add(amountKilled);
    					 break;
@@ -345,7 +349,7 @@ public class Main implements Runnable{
    		 arrow_X = arrow_X - speedArrow;
    	 }
    	 if (DPressed == true) {
-   		 arrow_X = arrow_X + speedArrow;
+   		 arrow_X = arrow_X + speedArrow; 
    	 }
 
    	 if (space == true) {
